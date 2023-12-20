@@ -1,0 +1,22 @@
+org: gabiw
+app: palindromo
+service: palindromo-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+  lambdaHandler:
+    handler: lambda_function.lambdaHandler
+
+plugins:
+  - serverless-offline
